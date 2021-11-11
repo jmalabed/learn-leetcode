@@ -1,25 +1,11 @@
-var twoSum = function (nums, target) {
-  let i = 0;
-  let j = nums.length - 1;
-  let usedNums = {};
-  let ansObj = [];
-  for (let k = 0; k < nums.length; k++) {
-    usedNums[nums[k]] = k;
+const twoSum = (nums, target) => {
+  let numHash = {};
+  for (num of nums) {
+    numHash[num] = numHash[num] + 1 || 1;
   }
-  let sum = Number.NEGATIVE_INFINITY;
-  while (i < j && sum != target) {
-    let sum = nums[i] + nums[j];
-    if (sum === target) {
-      console.log(i, nums[i], j, nums[j]);
-      ansObj = [usedNums[nums[i]], usedNums[nums[j]]];
-      return ansObj;
-    } else if (sum > target) {
-      j--;
-    } else if (sum < target) {
-      i++;
-    }
+  for (num of nums) {
+    numHash[num]--;
+    if (numHash[target - num] > 0)
+      return [nums.indexOf(num), nums.lastIndexOf(target - num)];
   }
 };
-const arr = [3, 3];
-const target = 6;
-console.log(twoSum(arr, target));
