@@ -1,7 +1,7 @@
 const twoSum = (nums, target) => {
   let numHash = {};
   for (num of nums) {
-    numHash[num] = numHash[num] + 1 || 1;
+    numHash[num] = numHaΩsh[num] + 1 || 1;
   }
   for (num of nums) {
     numHash[num]--;
